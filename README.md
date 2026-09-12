@@ -17,7 +17,7 @@ git clone https://github.com/Tanishq-Choudhary/Northstar-For-OptimizAlpha.git &&
 docker compose up --build
 ```
 
-Note: Powershell doesn't recognise && so write 'cd northstar' in next line if using it. 
+Note: This is for bash. Powershell doesn't recognise && so write 'cd northstar' in next line if using it. 
 
 Open **http://localhost:8080**. Database, tables and demo accounts are created on first boot.
 
