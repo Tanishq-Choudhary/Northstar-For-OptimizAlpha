@@ -4,7 +4,10 @@ Investment tracking tool. A client firm signs in, uploads a CSV of its holdings,
 
 React · TypeScript · Vite · Tailwind · Express · PostgreSQL 16 · Docker
 
-**Live:** <vercel-url> · **API:** <render-url>/healthz
+**Live:** https://northstar-for-optimiz-alpha.vercel.app
+**API:** https://northstar-api-nqmr.onrender.com/healthz
+
+The API is on Render's free tier, so the first request after a period of inactivity can take up to a minute.
 
 ![Dashboard](docs/dashboard.png)
 
@@ -13,7 +16,8 @@ React · TypeScript · Vite · Tailwind · Express · PostgreSQL 16 · Docker
 Needs Docker Desktop running.
 
 ```bash
-git clone <repository-url> && cd northstar
+git clone https://github.com/Tanishq-Choudhary/Northstar-For-OptimizAlpha.git northstar
+cd northstar
 docker compose up --build
 ```
 
@@ -116,3 +120,4 @@ Uploads would record who ran them and be reversible. Currently an import cannot 
 Tests would run against a disposable database on every change, confirming a deliberately unfiltered query still cannot reach another firm's rows.
 
 Large files would stream into the database instead of buffering. Safe at 5 MB, not at 500.
+
