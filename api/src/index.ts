@@ -4,7 +4,7 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import { env } from "./config/env.js";
-import { ensureAppRole } from "./db/bootstrap.js";
+import { ensureAppGrants, ensureAppRole } from "./db/bootstrap.js";
 import { migrate } from "./db/migrate.js";
 import { appPool, createAdminPool } from "./db/pool.js";
 import { seed } from "./db/seed.js";
@@ -63,6 +63,7 @@ async function bootstrapDatabase(): Promise<void> {
   try {
     await ensureAppRole(adminPool, env.APP_DB_PASSWORD);
     const applied = await migrate(adminPool);
+    await ensureAppGrants(adminPool);
     const seeded = await seed(adminPool);
     console.log(
       `[boot] migrations applied: ${applied.length ? applied.join(", ") : "none"}; seed: ${seeded ? "ok" : "skipped"}`,
