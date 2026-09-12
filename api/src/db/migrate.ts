@@ -32,7 +32,9 @@ export async function migrate(pool: Pool): Promise<string[]> {
 
     for (const file of files) {
       const sql = await readFile(path.join(MIGRATIONS_DIR, file), "utf8");
-      const checksum = createHash("sha256").update(sql).digest("hex");
+      const checksum = createHash("sha256")
+        .update(sql.replace(/\r\n/g, "\n").trimEnd())
+        .digest("hex");
       const previous = recorded.get(file);
 
       if (previous === checksum) continue;
