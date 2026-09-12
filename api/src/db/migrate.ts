@@ -39,7 +39,11 @@ export async function migrate(pool: Pool): Promise<string[]> {
 
       if (previous === checksum) continue;
       if (previous) {
-        throw new Error(`Migration ${file} changed after it was applied; create a new migration instead`);
+        throw new Error(
+          `Migration ${file} does not match the version already recorded in this database. ` +
+            "If you are setting this project up for the first time, an old database volume is present: " +
+            "stop the stack and run `docker compose down -v`, then start again.",
+        );
       }
 
       await client.query("BEGIN");

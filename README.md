@@ -4,7 +4,7 @@ Investment tracking tool. A client firm signs in, uploads a CSV of its holdings,
 
 React · TypeScript · Vite · Tailwind · Express · PostgreSQL 16 · Docker
 
-**Live:** https://northstar-for-optimiz-alpha.vercel.app · **API:** (https://northstar-api-nqmr.onrender.com/healthz)
+**Live:** <vercel-url> · **API:** <render-url>/healthz
 
 ![Dashboard](docs/dashboard.png)
 
@@ -13,11 +13,9 @@ React · TypeScript · Vite · Tailwind · Express · PostgreSQL 16 · Docker
 Needs Docker Desktop running.
 
 ```bash
-git clone https://github.com/Tanishq-Choudhary/Northstar-For-OptimizAlpha.git && cd northstar
+git clone <repository-url> && cd northstar
 docker compose up --build
 ```
-
-Note: This is for bash. Powershell doesn't recognise && so write 'cd northstar' in next line if using it. 
 
 Open **http://localhost:8080**. Database, tables and demo accounts are created on first boot.
 
@@ -28,7 +26,11 @@ Open **http://localhost:8080**. Database, tables and demo accounts are created o
 
 Upload `data/sample_good.csv` to get **$96,400.00** and **+4.10%**. Then try `data/sample_dirty.csv`.
 
-`docker compose down -v` resets everything. Without Docker: Node 22, PostgreSQL 16, copy `.env.example`, then `npm install && npm run dev` in `api/` and `web/`.
+`docker compose down -v` resets everything, including the database.
+
+Without Docker: Node 22, PostgreSQL 16, copy `.env.example`, then `npm install && npm run dev` in `api/` and `web/`.
+
+If a port is already taken, copy `.env.example` to `.env` and change `WEB_PORT`, `API_PORT` or `DB_PORT`. The database is published on 55432 rather than 5432 so it cannot clash with a PostgreSQL you already run. If the API reports a migration mismatch, an old volume from a previous run is present: `docker compose down -v` and start again.
 
 ## Bad data
 
