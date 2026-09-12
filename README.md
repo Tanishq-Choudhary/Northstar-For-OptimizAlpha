@@ -4,7 +4,7 @@ Investment tracking tool. A client firm signs in, uploads a CSV of its holdings,
 
 React · TypeScript · Vite · Tailwind · Express · PostgreSQL 16 · Docker
 
-**Live:** [<vercel-url>](https://northstar-for-optimiz-alpha.vercel.app) · **API:** (https://northstar-api-nqmr.onrender.com/healthz)
+**Live:** https://northstar-for-optimiz-alpha.vercel.app · **API:** (https://northstar-api-nqmr.onrender.com/healthz)
 
 ![Dashboard](docs/dashboard.png)
 
