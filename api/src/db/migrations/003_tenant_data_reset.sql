@@ -1,0 +1,1 @@
+GRANT DELETE ON holdings TO northstar_app;

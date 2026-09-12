@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: northstar-api
+    runtime: docker
+    plan: free
+    region: oregon
+    rootDir: api
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: ADMIN_DATABASE_URL
+        fromDatabase:
+          name: northstar-db
+          property: connectionString
+      - key: APP_DATABASE_URL
+        sync: false
+      - key: APP_DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false
+      - key: KEEPALIVE_URL
+        sync: false
+      - key: KEEPALIVE_INTERVAL_MS
+        value: 600000
+      - key: SEED_DEMO_ACCOUNTS
+        value: true
+      - key: DATABASE_SSL
+        value: false
+
+databases:
+  - name: northstar-db
+    plan: free
+    region: oregon
+    postgresMajorVersion: "16"
